@@ -83,7 +83,7 @@ def pregunta_05():
     E    9
     Name: _c2, dtype: int64
     """
-    return
+    return tbl0.groupby(["_c1"], as_index = True).max()['_c2']
 
 
 def pregunta_06():
@@ -95,7 +95,7 @@ def pregunta_06():
     ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 
     """
-    return
+    return list(tbl1['_c4'].drop_duplicates().sort_values().str.upper().values)
 
 
 def pregunta_07():
@@ -111,7 +111,7 @@ def pregunta_07():
     E    67
     Name: _c2, dtype: int64
     """
-    return
+    return tbl0.groupby(["_c1"], as_index = True).sum()['_c2']
 
 
 def pregunta_08():
