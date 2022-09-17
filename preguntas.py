@@ -50,7 +50,7 @@ def pregunta_03():
     Name: _c1, dtype: int64
 
     """
-    return
+    return tbl0.groupby(["_c1"], as_index = False).count()[["_c1","_c0"]].rename(columns = {"_c0":"cantidad"})
 
 
 def pregunta_04():
