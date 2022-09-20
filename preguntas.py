@@ -194,7 +194,15 @@ def pregunta_11():
     38   38      d,e
     39   39    a,d,f
     """
-    return
+    tbl1 = tbl1.sort_values(['_c0','_c4'])
+    tbl1 = tbl1.groupby(by = '_c0').apply(lambda x: x.values)
+    tbl1 = tbl1.apply(lambda x: [xi[1] for xi in x])
+    tbl1 = tbl1.to_frame()
+    tbl1[0] = tbl1[0].str.join(",")
+    tbl1 = tbl1.rename(columns = {0:'_c4'})
+    tbl1.index.name = '_c0'
+    tbl1 = tbl1.reset_index()
+    return tbl1
 
 
 def pregunta_12():
