@@ -174,6 +174,7 @@ def pregunta_10():
     tbl0[0] = tbl0[0].str.join(",").str.replace(",",":")
     tbl0 = tbl0.rename(columns = {0:'_c1'})
     tbl0.index.name = '_c0'
+    tbl0.reset_index()
     return tbl0
 
 
