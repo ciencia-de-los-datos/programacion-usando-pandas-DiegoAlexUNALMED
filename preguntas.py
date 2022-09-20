@@ -194,6 +194,8 @@ def pregunta_11():
     38   38      d,e
     39   39    a,d,f
     """
+    import pandas as pd
+    tbl1 = pd.read_csv("https://raw.githubusercontent.com/ciencia-de-los-datos/programacion-usando-pandas-DiegoAlexUNALMED/main/tbl1.tsv", sep = "\t")
     tbl1 = tbl1.sort_values(['_c0','_c4'])
     tbl1 = tbl1.groupby(by = '_c0').apply(lambda x: x.values)
     tbl1 = tbl1.apply(lambda x: [xi[1] for xi in x])
@@ -202,6 +204,7 @@ def pregunta_11():
     tbl1 = tbl1.rename(columns = {0:'_c4'})
     tbl1.index.name = '_c0'
     tbl1 = tbl1.reset_index()
+    tbl1
     return tbl1
 
 
