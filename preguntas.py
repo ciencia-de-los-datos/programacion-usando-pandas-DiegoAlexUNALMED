@@ -167,7 +167,14 @@ def pregunta_10():
     3   D                  1:2:3:5:5:7
     4   E  1:1:2:3:3:4:5:5:5:6:7:8:8:9
     """
-    return
+    tbl0 = tbl0.sort_values(['_c1','_c2'])[['_c1','_c2']]
+    tbl0 = tbl0.groupby(by = '_c1').apply(lambda x: x.values)
+    tbl0 = tbl0.apply(lambda x: [str(xi[1]) for xi in x])
+    tbl0 = tbl0.to_frame()
+    tbl0[0] = tbl0[0].str.join(",").str.replace(",",":")
+    tbl0 = tbl0.rename(columns = {0:'_c1'})
+    tbl0.index.name = '_c0'
+    return tbl0
 
 
 def pregunta_11():
