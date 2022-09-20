@@ -225,7 +225,17 @@ def pregunta_12():
     38   38                    eee:0,fff:9,iii:2
     39   39                    ggg:3,hhh:8,jjj:5
     """
-    return
+    import pandas as pd
+    tbl2 = pd.read_csv("https://raw.githubusercontent.com/ciencia-de-los-datos/programacion-usando-pandas-DiegoAlexUNALMED/main/tbl2.tsv", sep = "\t")
+    tbl2 = tbl2.sort_values(['_c0','_c5a','_c5b'])
+    tbl2 = tbl2.groupby(by = '_c0').apply(lambda x: x.values)
+    tbl2 = tbl2.apply(lambda x: [str(xi[1])+":"+str(xi[2]) for xi in x])
+    tbl2 = tbl2.to_frame()
+    tbl2[0] = tbl2[0].str.join(",")
+    tbl2 = tbl2.rename(columns = {0:'_c5'})
+    tbl2.index.name = '_c0'
+    tbl2 = tbl2.reset_index()
+    return tbl2
 
 
 def pregunta_13():
